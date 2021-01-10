@@ -19,9 +19,9 @@ const Camera = () => {
   }, [webcamRef, image]);
 
   const sendImage = async (imgString) => {
-    const s1 = imgString.split(new RegExp(",|;"));
+    console.log(process.env.REACT_APP_API_URL);
     try {
-      const response = await axios.post("http://localhost:3001/api/image", {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/image`, {
         imgString,
       });
       console.log(response);
