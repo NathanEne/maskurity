@@ -1,22 +1,34 @@
 import React from "react";
 import Webcam from "react-webcam";
+import axios from "axios";
+
+import "./index.css";
 
 const Camera = () => {
+  const webcamRef = React.useRef(null);
+  const [image, setImage] = React.useState(null);
+
   const videoConstraints = {
-    width: 1280,
-    height: 720,
     facingMode: "user",
   };
 
-  const webcamRef = React.useRef(null);
-
-  const [images, setImages] = React.useState([]);
-
   const capture = React.useCallback(() => {
     const imageSrc = webcamRef.current.getScreenshot();
-    setImages([...images, imageSrc]);
-    console.log(images);
-  }, [webcamRef, images]);
+    setImage(imageSrc);
+    console.log(image);
+  }, [webcamRef, image]);
+
+  const sendImage = async (imgString) => {
+    const s1 = imgString.split(new RegExp(",|;"));
+    try {
+      const response = await axios.post("http://localhost:3001/api/image", {
+        imgString,
+      });
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <>
@@ -28,12 +40,17 @@ const Camera = () => {
         width={960}
         videoConstraints={videoConstraints}
       />
-      <button onClick={capture}>Capture photo</button>
       <div>
-        {images.map((x) => (
-          <img src={x} alt="missing" />
-        ))}
+        <button onClick={capture}>Capture photo</button>
       </div>
+      {image && (
+        <div>
+          <img src={image} alt="missing" className="CapturedImage" />
+          <div>
+            <button onClick={() => sendImage(image)}>Send Photo</button>
+          </div>
+        </div>
+      )}
     </>
   );
 };
