@@ -1,3 +1,93 @@
 .CapturedImage {
-    height: 540px;
+  height: 540px;
+  margin-bottom: 40px;
+}
+
+#mask-overlay {
+  position: fixed; /* Sit on top of the page content */
+  display: block; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(11, 156, 49, 1); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+}
+
+#mask-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 150px;
+  color: white;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+#no-mask-overlay {
+  position: fixed; /* Sit on top of the page content */
+  display: block; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 0, 40, 1); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+}
+
+#no-mask-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 100px;
+  line-height: 110px;
+  width: 1000px;
+  color: white;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+#exempt-overlay {
+  position: fixed; /* Sit on top of the page content */
+  display: block; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 1); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+}
+
+#exempt-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 100px;
+  line-height: 110px;
+  width: 1000px;
+  color: black;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.score {
+  margin-top: 30px;
+  font-size: 30px;
+}
+
+.speech {
+  font-size: 24px;
+  width: 960px;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 72px;
 }

@@ -4,12 +4,8 @@ import Camera from "./components/Camera";
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        Maskurity
-      </header>
-      <div>
-        <Camera />
-      </div>
+      <h1 className="App-Header">Maskurity 😷</h1>
+      <Camera />
     </div>
   );
 }
