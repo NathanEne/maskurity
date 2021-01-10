@@ -1,4 +1,5 @@
 require("dotenv").config();
+const header = '"';
 const projectId = process.env.PROJECT_ID;
 const location = process.env.LOCATION;
 //TODO: Add model ID after training is complete
@@ -22,12 +23,19 @@ async function predict() {
 
   const [response] = await client.predict(request);
 
+  let arr = [];
   for (const annotationPayload of response.payload) {
+    let prediction = {
+      name: annotationPayload.displayName,
+      score: annotationPayload.classification.score,
+    };
+    arr.push(prediction);
     console.log(`Predicted class name: ${annotationPayload.displayName}`);
     console.log(
       `Predicted class score: ${annotationPayload.classification.score}`
     );
   }
+  return arr;
 }
 
 predict();
