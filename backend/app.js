@@ -2,19 +2,37 @@ require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const morgan = require("morgan");
 const mountRoutes = require("./routes");
 
 const app = express();
 
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json({ limit: "200mb" }));
-// app.use(bodyParser.urlencoded({ limit: "200mb", extended: true }));
-app.use(cors());
+
+const allowedOrigins = ["http://localhost:3000", "https://maskurity.herokuapp.com"];
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Allow requests from allowedOrigins, 
+    // and requests with no origin such as mobile apps or curl requests
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error(`Origin "${origin}" denied by CORS policy`), false);
+    }
+  },
+};
+
+app.use(cors(corsOptions));
+
+// HTTP request logger
+app.use(
+  morgan(
+    ":date[web] :method :url :status :res[content-length] - :response-time ms"
+  )
+);
 
 mountRoutes(app);
-
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
 
 const PORT = process.env.PORT || 3001;
 
