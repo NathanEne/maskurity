@@ -14,11 +14,11 @@ const allowedOrigins = ["http://localhost:3000", "https://maskurity.herokuapp.co
 const corsOptions = {
   origin: function (origin, callback) {
     // Allow requests from allowedOrigins, 
-    // and requests with no origin such as mobile apps or curl requests
-    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+    // and requests with no origin such as REST tools or server-to-server requests
+    if (allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
-      callback(new Error(`Origin "${origin}" denied by CORS policy`), false);
+      callback(new Error(`Origin "${origin}" denied by CORS policy`));
     }
   },
 };
