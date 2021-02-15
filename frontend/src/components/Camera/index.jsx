@@ -74,14 +74,12 @@ const Camera = () => {
           await sleep(5500);
           setPage("main");
           resetTranscript();
-          // alert("access granted " + name + " " + score);
         } else {
           speak({ text: "Access denied! Please wear a mask and try again." });
           setPage("no-mask");
           await sleep(5500);
           setPage("main");
           resetTranscript();
-          // alert("access denied " + name + " " + score);
         }
       } catch (error) {
         console.error(error);
@@ -106,8 +104,6 @@ const Camera = () => {
 
   useEffect(() => {
     SpeechRecognition.startListening({ continuous: true });
-    // speak("HELLO WORLD!");
-    // capture();
     return () => SpeechRecognition.stopListening();
   }, [speak]);
 
@@ -147,6 +143,7 @@ const Camera = () => {
           )}
         </div>
       </div>
+      
       {page === "mask" && (
         <div id="mask-overlay">
           <div id="mask-text">Access Granted!</div>
