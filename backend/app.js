@@ -13,11 +13,12 @@ app.use(bodyParser.json({ limit: "200mb" }));
 const allowList = ["https://maskurity.herokuapp.com"];
 const corsOptions = {
   origin: function (origin, callback) {
-    if (process.env.NODE_ENV === "development") {
-      allowList.push(`http://localhost:${PORT}`);
-    }
-    // Allow requests from allowList
-    if (allowList.indexOf(origin) !== -1) {
+    // Allow requests from allowList, or localhost:3000 during development
+    if (
+      allowList.indexOf(origin) !== -1 ||
+      (process.env.NODE_ENV === "development" &&
+        origin === "http://localhost:3000")
+    ) {
       callback(null, true);
     } else {
       callback(new Error(`Origin "${origin}" denied by CORS policy`));
