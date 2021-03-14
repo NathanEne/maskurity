@@ -1,7 +1,9 @@
 # Maskurity - [nwHacks2021](https://devpost.com/software/maskurity/)
 Maskurity is a voice-activated mask detection web app that automates entry into a public indoor space.
 
-Built using React, NodeJS, Web Speech API, and Google Cloud AutoML Vision.
+Built with the goal of preventing anti-maskers from endangering grocery store employees and customers.
+
+Tech Stack: React, NodeJS, Web Speech API, and Google Cloud AutoML Vision.
 
 ## Inspiration
 We were inspired by the job of one of our team members. Nathan works at a grocery store in downtown Calgary that is plighted by individuals often walking into the store without a mask on, despite the [bylaw](https://www.calgary.ca/csps/cema/covid19/safety/covid-19-city-of-calgary-mask-bylaw.html) in Calgary, which requires mask use. This causes unnecessary stress for the security guard, as they are responsible for kicking these individuals out after requesting they apply a mask. This distracts the security guard from their main purpose: preventing theft.
